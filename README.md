@@ -16,22 +16,6 @@
 ## Librarys   
 * Slf4j (Logs)
 
-## Explanations
-
-H2 (Database): H2 is an in-memory and embedded relational database often used for development and testing purposes. It allows you to mimic database interactions without the need for an external database server.
-
-Lombok: A library that reduces boilerplate code by automatically generating getter, setter, and other methods at compile time. It enhances code readability and maintainability.
-
-Spring Test: Part of the Spring Testing framework, this dependency provides support for writing unit and integration tests for Spring components.
-
-JUnit 5: A widely-used testing framework for Java. It's used for writing and executing unit tests to ensure that individual parts of your code work as expected.
-
-Mockito: A mocking framework used in unit testing to create mock objects, allowing you to isolate and test specific parts of your code.
-
-JPA (Java Persistence API): A Java specification for managing relational data in Java applications. It provides an abstraction layer over databases and simplifies database interactions.
-
-Slf4j (Simple Logging Facade for Java): It allows you to switch between different logging implementations without changing your code.
-
 ## Configuration
 
 1. Clone this repository to your local machine: `git clone hgit@github.com:nicoreinaldo/Ecommerce.git`
