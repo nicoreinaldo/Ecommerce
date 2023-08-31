@@ -1,9 +1,9 @@
 # Ecommerce
 
 ## Technologies
-* Java 17
+* Java 17 (required)
 * Spring Boot 3.1.3
-* Maven
+* Maven (required)
 * H2 (DataBase)
 
 ## Dependicies  
