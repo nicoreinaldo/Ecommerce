@@ -44,6 +44,7 @@ Make sure you have Java 17 installed - https://www.oracle.com/java/technologies/
 Make sure you have Maven installed - https://maven.apache.org/install.html
 
 `mvn clean install` if not working, try  `./mvnw clean install`
+
 `mvn spring-boot:run` if not working, try `./mvnw spring-boot:run`
 
 
