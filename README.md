@@ -1,9 +1,9 @@
 # Ecommerce
 
 ## Technologies
-* Java 17 (required)
+* Java 17 
 * Spring Boot 3.1.3
-* Maven (required)
+* Maven 
 * H2 (DataBase)
 
 ## Dependicies  
@@ -39,7 +39,9 @@ Slf4j (Simple Logging Facade for Java): It allows you to switch between differen
 
 ## Build and Execution
 
-Make sure you have maven installed - https://maven.apache.org/install.html
+Make sure you have Java 17 installed - https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html
+
+Make sure you have Maven installed - https://maven.apache.org/install.html
 
 `mvn clean install` if not working, try  `./mvnw clean install`
 `mvn spring-boot:run` if not working, try `./mvnw spring-boot:run`
