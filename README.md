@@ -53,6 +53,16 @@ The first is through the console (terminal or cmd) executing a curl to the apis,
 
 I will leave the report of the sample api and curl
 
+If you wanna see the tables in database, insert in new tab browser http://localhost:8080/h2-console
+
+Driver Class   : org.h2.Driver
+
+Jdbc url       : jdbc:h2:mem:testdb 
+
+User Name      : sa
+
+And press conect
+
 # API: Carts
 
 ## Create a Cart
