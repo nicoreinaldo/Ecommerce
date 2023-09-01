@@ -128,6 +128,12 @@ Delete a specific cart along with all its contents.
 ## Run Test
 
 `mvn test` if not working, try  `./mvn test`
+
+<img width="1669" alt="Screenshot 2023-09-01 at 02 33 27" src="https://github.com/nicoreinaldo/Ecommerce/assets/22691843/78ef5485-f8b9-40f3-982f-7add656bd18e">
+
+<img width="1698" alt="Screenshot 2023-09-01 at 02 53 17" src="https://github.com/nicoreinaldo/Ecommerce/assets/22691843/54ed4a10-5442-4e62-9304-3ad8c8ff004d">
+
+
   
 
 
