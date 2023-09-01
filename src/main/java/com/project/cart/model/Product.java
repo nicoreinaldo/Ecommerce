@@ -7,6 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Product {
 
     @Id
@@ -25,5 +26,11 @@ public class Product {
     public Product(String description, double amount) {
         this.description = description;
         this.amount = amount;
+    }
+
+    public Product(String description, double amount, Cart cart) {
+        this.description = description;
+        this.amount = amount;
+        this.cart = cart;
     }
 }

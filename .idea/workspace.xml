@@ -4,7 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a2bff316-be00-4bad-9d01-03dfa5b3d974" name="Changes" comment="" />
+    <list default="true" id="a2bff316-be00-4bad-9d01-03dfa5b3d974" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/cart/dto/CartDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/cart/dto/ProductDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/cart/dto/ProductRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/cart/controllers/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/cart/controllers/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/cart/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/cart/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/cart/services/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/cart/services/CartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/project/cart/controllers/CartControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/project/cart/controllers/CartControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/project/cart/services/CartServicesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/project/cart/services/CartServicesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cart-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cart-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/cart/controllers/CartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/cart/controllers/CartController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/cart/model/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/cart/model/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/cart/services/CartService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/cart/services/CartService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.project.cart.CartApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.project.cart.CartApplicationTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.project.cart.controllers.CartControllerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.project.cart.controllers.CartControllerTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.project.cart.services.CartServicesTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.project.cart.services.CartServicesTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.project.cart.CartApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.project.cart.CartApplicationTests.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.project.cart.controllers.CartControllerTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.project.cart.controllers.CartControllerTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.project.cart.services.CartServicesTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.project.cart.services.CartServicesTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/project/cart/controllers/CartControllerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/project/cart/services/CartServicesTest.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,14 +56,26 @@
         <option name="mavenHome" value="$USER_HOME$/bin/apache-maven-3.9.4" />
       </MavenGeneralSettings>
     </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="jdkForImporter" value="corretto-17" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="corretto-17" />
   </component>
   <component name="ProjectId" id="2UeLOuRomLaH3RO2F75iIMe1WrJ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -51,10 +89,10 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "MavenSettings",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.runner",
     "spring.configuration.checksum": "54013ba69c196820e56801f1ef5aad54",
     "vue.rearranger.settings.migration": "true"
   },
@@ -64,22 +102,12 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="RunManager" selected="JUnit.CartControllerTest">
-    <configuration name="CartApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="cart" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.project.cart.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.project.cart" />
-      <option name="MAIN_CLASS_NAME" value="com.project.cart.CartApplicationTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="CartControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cart" />
       <extension name="coverage">
@@ -91,6 +119,22 @@
       <option name="PACKAGE_NAME" value="com.project.cart.controllers" />
       <option name="MAIN_CLASS_NAME" value="com.project.cart.controllers.CartControllerTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CartControllerTest.testAddProductsToCart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cart" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.project.cart.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.project.cart.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.project.cart.controllers.CartControllerTest" />
+      <option name="METHOD_NAME" value="testAddProductsToCart" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -110,7 +154,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CartServicesTest.testGetCartById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CartServicesTest.testAddProductsToCart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cart" />
       <extension name="coverage">
         <pattern>
@@ -120,7 +164,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.project.cart.services" />
       <option name="MAIN_CLASS_NAME" value="com.project.cart.services.CartServicesTest" />
-      <option name="METHOD_NAME" value="testGetCartById" />
+      <option name="METHOD_NAME" value="testAddProductsToCart" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CartServicesTest.testAddProductsToCartException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cart" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.project.cart.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.project.cart.services" />
+      <option name="MAIN_CLASS_NAME" value="com.project.cart.services.CartServicesTest" />
+      <option name="METHOD_NAME" value="testAddProductsToCartException" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -136,9 +196,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.CartControllerTest" />
+        <item itemvalue="JUnit.CartControllerTest.testAddProductsToCart" />
         <item itemvalue="JUnit.CartServicesTest" />
-        <item itemvalue="JUnit.CartServicesTest.testGetCartById" />
-        <item itemvalue="JUnit.CartApplicationTests" />
+        <item itemvalue="JUnit.CartServicesTest.testAddProductsToCartException" />
+        <item itemvalue="JUnit.CartServicesTest.testAddProductsToCart" />
       </list>
     </recent_temporary>
   </component>
@@ -159,11 +220,15 @@
       <workItem from="1693342877588" duration="39444000" />
       <workItem from="1693426235329" duration="4737000" />
       <workItem from="1693437411943" duration="35000" />
+      <workItem from="1693437458090" duration="15381000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

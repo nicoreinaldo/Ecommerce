@@ -1,8 +1,8 @@
 package com.project.cart.controllers;
 
+import com.project.cart.dto.CartDTO;
+import com.project.cart.dto.ProductRequestDTO;
 import com.project.cart.exception.CartException;
-import com.project.cart.model.Cart;
-import com.project.cart.model.Product;
 import com.project.cart.services.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,9 +20,9 @@ public class CartController {
     private CartService cartService;
 
     @PostMapping
-    public ResponseEntity<Cart> createCart() {
+    public ResponseEntity<CartDTO> createCart() {
         try {
-            Cart createdCart = cartService.createCart();
+            CartDTO createdCart = cartService.createCart();
             return new ResponseEntity<>(createdCart, HttpStatus.CREATED);
         }catch (CartException e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -30,8 +30,8 @@ public class CartController {
     }
 
     @GetMapping("/{cartId}")
-    public ResponseEntity<Cart> getCart(@PathVariable UUID cartId) {
-        Cart cart = cartService.getCartById(cartId);
+    public ResponseEntity<CartDTO> getCart(@PathVariable UUID cartId) {
+        CartDTO cart = cartService.getCartById(cartId);
         if (cart != null) {
             return new ResponseEntity<>(cart, HttpStatus.OK);
         } else {
@@ -40,7 +40,7 @@ public class CartController {
     }
 
     @PostMapping("/{cartId}/products")
-    public ResponseEntity<Cart> addProductsToCart(@PathVariable UUID cartId, @RequestBody List<Product> products) {
+    public ResponseEntity<CartDTO> addProductsToCart(@PathVariable UUID cartId, @RequestBody List<ProductRequestDTO> products) {
             return cartService.addProductsToCart(cartId, products);
     }
 

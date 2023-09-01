@@ -1,11 +1,14 @@
 /Users/nicolas/Desktop/Personal/Ecommerce/src/main/java/com/project/cart/task/ScheduledTask.java
 /Users/nicolas/Desktop/Personal/Ecommerce/src/main/java/com/project/cart/model/Cart.java
 /Users/nicolas/Desktop/Personal/Ecommerce/src/main/java/com/project/cart/controllers/CartController.java
+/Users/nicolas/Desktop/Personal/Ecommerce/src/main/java/com/project/cart/services/ProductService.java
+/Users/nicolas/Desktop/Personal/Ecommerce/src/main/java/com/project/cart/dto/CartDTO.java
+/Users/nicolas/Desktop/Personal/Ecommerce/src/main/java/com/project/cart/model/Product.java
+/Users/nicolas/Desktop/Personal/Ecommerce/src/main/java/com/project/cart/dto/ProductDTO.java
 /Users/nicolas/Desktop/Personal/Ecommerce/src/main/java/com/project/cart/repository/CartRepository.java
 /Users/nicolas/Desktop/Personal/Ecommerce/src/main/java/com/project/cart/exception/CartException.java
-/Users/nicolas/Desktop/Personal/Ecommerce/src/main/java/com/project/cart/services/ProductService.java
 /Users/nicolas/Desktop/Personal/Ecommerce/src/main/java/com/project/cart/repository/ProductRepository.java
 /Users/nicolas/Desktop/Personal/Ecommerce/src/main/java/com/project/cart/CartApplication.java
-/Users/nicolas/Desktop/Personal/Ecommerce/src/main/java/com/project/cart/model/Product.java
 /Users/nicolas/Desktop/Personal/Ecommerce/src/main/java/com/project/cart/services/CartService.java
+/Users/nicolas/Desktop/Personal/Ecommerce/src/main/java/com/project/cart/dto/ProductRequestDTO.java
 /Users/nicolas/Desktop/Personal/Ecommerce/src/main/java/com/project/cart/exception/CartNotFoundException.java

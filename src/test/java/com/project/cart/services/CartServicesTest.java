@@ -1,5 +1,8 @@
 package com.project.cart.services;
 
+import com.project.cart.dto.CartDTO;
+import com.project.cart.dto.ProductRequestDTO;
+import com.project.cart.exception.CartException;
 import com.project.cart.model.Cart;
 import com.project.cart.model.Product;
 import com.project.cart.repository.CartRepository;
@@ -51,13 +54,17 @@ public class CartServicesTest {
     @Test
     void testCreateCart() {
         Cart expectedCart = new Cart();
-        when(cartRepository.save(any())).thenReturn(expectedCart);
+        when(cartRepository.save(any(Cart.class))).thenReturn(expectedCart);
 
-        Cart createdCart = cartService.createCart();
+        CartDTO createdCart = cartService.createCart();
+        verify(cartRepository, times(1)).save(any(Cart.class));
 
         assertNotNull(createdCart);
-        assertEquals(expectedCart, createdCart);
-        verify(cartRepository, times(1)).save(any());
+        assertEquals(expectedCart.getId(), createdCart.getId());
+        assertEquals(expectedCart.getCreatedAt(), createdCart.getCreatedAt());
+        assertEquals(expectedCart.getLastActivity(), createdCart.getLastActivity());
+        assertEquals(expectedCart.getProducts().size(), createdCart.getProducts().size());
+
     }
 
     @Test
@@ -67,11 +74,14 @@ public class CartServicesTest {
 
         when(cartRepository.findById(cartId)).thenReturn(Optional.of(cart));
 
-        Cart retrievedCart = cartService.getCartById(cartId);
+        CartDTO retrievedCart = cartService.getCartById(cartId);
+        verify(cartRepository, times(1)).findById(cartId);
 
         assertNotNull(retrievedCart);
-        assertEquals(cart, retrievedCart);
-        verify(cartRepository, times(1)).findById(cartId);
+        assertEquals(cart.getId(), retrievedCart.getId());
+        assertEquals(cart.getCreatedAt(), retrievedCart.getCreatedAt());
+        assertEquals(cart.getLastActivity(), retrievedCart.getLastActivity());
+        assertEquals(cart.getProducts().size(), retrievedCart.getProducts().size());
     }
 
     @Test
@@ -92,9 +102,9 @@ public class CartServicesTest {
     @Test
     void testAddProductsToCart() {
         UUID cartId = UUID.randomUUID();
-        List<Product> products = new ArrayList<>();
-        products.add(new Product("Product 1", 10.0));
-        products.add(new Product("Product 2", 15.0));
+        List<ProductRequestDTO> products = new ArrayList<>();
+        products.add(new ProductRequestDTO("Product 1", 10.0));
+        products.add(new ProductRequestDTO("Product 2", 15.0));
 
         Cart cart = new Cart();
         when(cartRepository.findById(cartId)).thenReturn(Optional.of(cart));
@@ -103,7 +113,7 @@ public class CartServicesTest {
         // Capture the LocalDateTime before making the call
         LocalDateTime beforeCall = LocalDateTime.now();
 
-        ResponseEntity<Cart> responseEntity = cartService.addProductsToCart(cartId, products);
+        ResponseEntity<CartDTO> responseEntity = cartService.addProductsToCart(cartId, products);
 
         assertNotNull(responseEntity);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
@@ -119,13 +129,13 @@ public class CartServicesTest {
     @Test
     void testAddProductsToCartNotFound() {
         UUID cartId = UUID.randomUUID();
-        List<Product> products = new ArrayList<>();
-        products.add(new Product("Product 1", 10.0));
-        products.add(new Product("Product 2", 15.0));
+        List<ProductRequestDTO> products = new ArrayList<>();
+        products.add(new ProductRequestDTO("Product 1", 10.0));
+        products.add(new ProductRequestDTO("Product 2", 15.0));
 
         when(cartRepository.findById(cartId)).thenReturn(Optional.empty());
 
-        ResponseEntity<Cart> responseEntity = cartService.addProductsToCart(cartId, products);
+        ResponseEntity<CartDTO> responseEntity = cartService.addProductsToCart(cartId, products);
 
         assertEquals(HttpStatus.NOT_FOUND, responseEntity.getStatusCode());
     }
@@ -133,11 +143,11 @@ public class CartServicesTest {
     @Test
     void testAddProductsToCartException() {
         UUID cartId = UUID.randomUUID();
-        List<Product> products = new ArrayList<>();
+        List<ProductRequestDTO> products = new ArrayList<>();
 
         when(cartRepository.findById(cartId)).thenThrow(new RuntimeException("Simulated exception"));
 
-        ResponseEntity<Cart> responseEntity = cartService.addProductsToCart(cartId, products);
+        ResponseEntity<CartDTO> responseEntity = cartService.addProductsToCart(cartId, products);
 
         assertNotNull(responseEntity);
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseEntity.getStatusCode());
@@ -145,6 +155,7 @@ public class CartServicesTest {
         verify(cartRepository, times(1)).findById(cartId);
         verify(cartRepository, never()).save(any());
     }
+
 
 
     @Test
@@ -156,4 +167,22 @@ public class CartServicesTest {
         verify(cartRepository, times(1)).deleteById(cartId);
     }
 
+    @Test
+    void testGetCartWithNoProducts() {
+        UUID cartId = UUID.randomUUID();
+        Cart cart = new Cart();
+        cart.setId(cartId);
+
+        when(cartRepository.findById(cartId)).thenReturn(Optional.of(cart));
+
+        CartDTO cartDTO = cartService.getCartById(cartId);
+
+        assertNotNull(cartDTO);
+        assertEquals(cart.getId(), cartDTO.getId());
+        assertEquals(cart.getCreatedAt(), cartDTO.getCreatedAt());
+        assertEquals(cart.getLastActivity(), cartDTO.getLastActivity());
+        assertTrue(cartDTO.getProducts().isEmpty());
+
+        verify(cartRepository, times(1)).findById(cartId);
+    }
 }

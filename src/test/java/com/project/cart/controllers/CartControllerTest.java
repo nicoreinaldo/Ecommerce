@@ -1,25 +1,29 @@
 package com.project.cart.controllers;
 
-import com.project.cart.model.Cart;
-import com.project.cart.model.Product;
-import com.project.cart.repository.CartRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.project.cart.dto.CartDTO;
+import com.project.cart.dto.ProductDTO;
+import com.project.cart.dto.ProductRequestDTO;
 import com.project.cart.services.CartService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.time.LocalDateTime;
@@ -29,6 +33,8 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+@DataJpaTest
+@AutoConfigureTestDatabase
 @ExtendWith(MockitoExtension.class)
 public class CartControllerTest {
 
@@ -36,12 +42,9 @@ public class CartControllerTest {
 
     @Mock
     private CartService cartService;
-    @Mock
-    private CartRepository cartRepository;
     @InjectMocks
     private CartController cartController;
 
-    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     @BeforeEach
     void setUp() {
@@ -51,7 +54,7 @@ public class CartControllerTest {
 
     @Test
     void testCreateCart() throws Exception {
-        Cart createdCart = new Cart();
+        CartDTO createdCart = new CartDTO();
         UUID cartId = UUID.randomUUID();
         createdCart.setId(cartId);
         when(cartService.createCart()).thenReturn(createdCart);
@@ -67,7 +70,7 @@ public class CartControllerTest {
     @Test
     void testGetCart() throws Exception {
         UUID cartId = UUID.randomUUID();
-        Cart cart = new Cart();
+        CartDTO cart = new CartDTO();
         when(cartService.getCartById(cartId)).thenReturn(cart);
 
         mockMvc.perform(get("/carts/{cartId}", cartId))
@@ -78,22 +81,36 @@ public class CartControllerTest {
         verify(cartService, times(1)).getCartById(cartId);
     }
 
+
+    @Transactional
+    @DirtiesContext
+    @Test
     public void testAddProductsToCart() throws Exception {
         UUID cartId = UUID.randomUUID();
-        List<Product> products = new ArrayList<>();
-        products.add(new Product("Product 1", 10.0));
-        products.add(new Product("Product 2", 15.0));
+        List<ProductRequestDTO> products = new ArrayList<>();
+        products.add(new ProductRequestDTO("Product 1", 10.0));
+        products.add(new ProductRequestDTO("Product 2", 15.0));
 
-        Cart cart = new Cart();
-        when(cartService.addProductsToCart(eq(cartId), eq(products))).thenReturn(new ResponseEntity<>(cart, HttpStatus.OK));
+        List<ProductDTO> productsDTO = new ArrayList<>();
+        productsDTO.add(new ProductDTO(1,"Product 1", 10.0));
+        productsDTO.add(new ProductDTO(2,"Product 2", 15.0));
 
-        mockMvc.perform(post("/api/carts/{cartId}/products", cartId)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(new ObjectMapper().writeValueAsString(products)))
+        CartDTO cartDTO = new CartDTO(cartId, LocalDateTime.now(), LocalDateTime.now(), productsDTO);
+        ResponseEntity<CartDTO> responseEntity = ResponseEntity.ok(cartDTO);
+
+        when(cartService.addProductsToCart(any(UUID.class), anyList())).thenReturn(responseEntity);
+
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders
+                .post("/carts/{cartId}/products", cartId)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(toJson(products));
+
+        MvcResult result = mockMvc.perform(request)
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(cart.getId().toString()));
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
+                .andReturn();
 
-        verify(cartService, times(1)).addProductsToCart(eq(cartId), eq(products));
+        verify(cartService, times(1)).addProductsToCart(any(UUID.class), anyList());
     }
 
 
@@ -106,4 +123,21 @@ public class CartControllerTest {
 
         verify(cartService, times(1)).deleteCart(cartId);
     }
+
+    @Test
+    void testGetNonExistentCart() throws Exception {
+        UUID cartId = UUID.randomUUID();
+        when(cartService.getCartById(cartId)).thenReturn(null);
+
+        mockMvc.perform(get("/carts/{cartId}", cartId))
+                .andExpect(status().isBadRequest());
+
+        verify(cartService, times(1)).getCartById(cartId);
+    }
+
+
+    private String toJson(Object obj) throws JsonProcessingException {
+        return new ObjectMapper().writeValueAsString(obj);
+    }
+
 }
